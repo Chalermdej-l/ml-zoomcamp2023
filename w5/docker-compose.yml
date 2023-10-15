@@ -1,0 +1,14 @@
+version: "3.9"
+
+networks:
+  back-tier:
+  
+# Cloud deployment
+services:  
+  webhw:
+    restart: always
+    image: hmweb  
+    ports:
+        - "9696:9696"  
+    command: waitress-serve --host 0.0.0.0 --port 9696 web:app
+    profiles: ["web"]
